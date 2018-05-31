@@ -73,15 +73,16 @@
 
             <div class="col-sm">
 
-<div style="padding: 100px 100px 10px;">
-        <form class="bs-example bs-example-form" role="form">
-            <div class="input-group">
-                <span class="input-group-addon">搜索</span>
-                <input type="text" class="form-control" placeholder="user">
-            </div>
-        </form>
-    </div>
-    
+                    <form method="post">
+                        <div>
+                          <label for="search">User</label>
+                          <input name="search" id="search" value="user">
+                        </div>
+                        <div>
+                          <button>Search</button>
+                        </div>
+                      </form>
+
                 <h3>用户名： {{ user_name }}</h3>
                 <div id="medal" style="width: 300px;height:200px;"></div>
                 <script type="text/javascript">
