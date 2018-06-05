@@ -23,12 +23,23 @@ def index():
             obj = json.loads(ret)
         except json.JSONDecodeError:
             return ret
+        skill_point_infos = obj.get('skills_points_dic')[0]
+        skills = []
+        if skill_point_infos is not None:
+            total_point = skill_point_infos['total_point']
+            for info in skill_point_infos['skill_points']:
+                skills.append({'name': info['name'], 'incr': info['incr']})
+
         return render_template(
-            'base.html', skills=obj.get('skills'),
+            'base.html', skills=skills,
             user_name=obj.get('user_name'),
             education=obj.get('education'),
-            contribution = "START",
             fans_num = obj.get("followers_count"),
+            gold = obj.get("medal_count_gold"),
+            silver = obj.get("silver"),
+            bronze = obj.get("bronze"),
+            company = obj.get("occupation")
+
         )
 
     else:
