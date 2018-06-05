@@ -24,11 +24,11 @@ def index():
         except json.JSONDecodeError:
             return ret
         return render_template(
-            'base.html', skills=obj['skills'],
-            user_name=obj['user_name'],
-            education=obj['education'],
+            'base.html', skills=obj.get('skills'),
+            user_name=obj.get('user_name'),
+            education=obj.get('education'),
             contribution = "START",
-            fans_num = '465',
+            fans_num = obj.get("followers_count"),
         )
 
     else:
