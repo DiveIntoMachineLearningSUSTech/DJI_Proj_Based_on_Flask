@@ -46,8 +46,11 @@ def index():
                         "c"],
                 user_name = "reboz",
                 education = "北京大学",
-                contribution = "START",
                 fans_num = '465',
+                gold = 1,
+                silver = 2,
+                 bronze = 3,
+                 rank = 2,
+                 company = "test",
+                 occupation  ="test"
                 )
-
-print(__name__)
