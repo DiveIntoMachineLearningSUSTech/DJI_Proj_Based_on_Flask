@@ -141,7 +141,24 @@
                     <h4>
                         排名: {{ rank }}
                     </h4>
-    
+                    <h4>奖牌数:</h4>
+                    <ul>
+                        <li>
+                            金牌:&nbsp;{{ gold }}
+                        </li>
+                        <li>
+                            银牌:&nbsp;{{ silver }}
+                        </li>
+                        <li>
+                            铜牌:&nbsp;{{ bronze }}
+                        </li>
+                    </ul>
+                    <h4>文章</h4>
+                    <ul>
+                        {% for article in articles %}
+                            <li>题目:&nbsp;{{ article.doc_title }}&nbsp;点赞数:&nbsp;{{ article.count }}</li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
