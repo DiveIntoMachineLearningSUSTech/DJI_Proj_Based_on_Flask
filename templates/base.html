@@ -45,140 +45,24 @@
                   </div>
                 </nav>
               </header>
-              <main role="main" class="container">
-                    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div class="container">
-            <h1>Hello, world!</h1>
-            <div class="row">
-                <div class="col-sm">
-                    <div id="main" style="width: 600px;height:400px;"></div>
-    
-                    <script type="text/javascript">
-                        // 基于准备好的dom，初始化echarts实例
-                        var myChart = echarts.init(document.getElementById('main'));
-                        var sk = {{ skills|safe }}
-                        var sk_va = []
-                        for (var i =0 ;i<sk.length;i++) {
-                            sk_va.push({ value: sk[i]['incr'], name: sk[i]['name'] })
-                            // sk_va.push({ value: 1, name: sk[i] })
-                        }
-    
-                        // 指定图表的配置项和数据
-                        var option = {
-                            title: {
-                                text: 'rozbo',
-                                subtext: 'User Skills',
-                                x: 'center'
-                            },
-                            tooltip: {
-                                trigger: 'item',
-                                formatter: "{a} <br/>{b} : {c} ({d}%)"
-                            },
-                            legend: {
-                                orient: 'vertical',
-                                left: 'left',
-                                data: sk,
-                            },
-                            series: [
-                                {
-                                    name: 'Skill',
-                                    type: 'pie',
-                                    radius: '55%',
-                                    center: ['50%', '60%'],
-                                    data: sk_va,
-                                    itemStyle: {
-                                        emphasis: {
-                                            shadowBlur: 10,
-                                            shadowOffsetX: 0,
-                                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                        }
-                                    }
-                                }
-                            ]
-                        };
-    
-    
-                        // 使用刚指定的配置项和数据显示图表。
-                        myChart.setOption(option);
-                    </script>
-                </div>
-    
-                <div class="col-sm">
-    
-                    <h3>用户名： {{ user_name }}</h3>
-                    <div id="medal" style="width: 300px;height:200px;"></div>
-                    <script type="text/javascript">
-                        // 基于准备好的dom，初始化echarts实例
-                        var myChart = echarts.init(document.getElementById('medal'));
-    
-                        // 指定图表的配置项和数据
-                        var option = {
-                            xAxis: {
-                                type: 'category',
-                                data: ['gold', 'silver', 'bronze']
-                            },
-                            yAxis: {
-                                type: 'value'
-                            },
-                            series: [{
-                                data: [{{ gold|safe }}, {{ silver|safe }}, {{ bronze|safe }}],
-                                type: 'bar'
-                            }]
-                        };
-    
-    
-    
-                        // 使用刚指定的配置项和数据显示图表。
-                        myChart.setOption(option);
-                    </script>
-                    <h4>教育: {{ education }}</h4>
-                    <h4>
-                        粉丝数: {{ fans_num }}
-                    </h4>
-                    <h4>
-                        公司: {{ company }}
-                    </h4>
-                    <h4>
-                        排名: {{ rank }}
-                    </h4>
-                    <h4>奖牌数:</h4>
-                    <ul>
-                        <li>
-                            金牌:&nbsp;{{ gold }}
-                        </li>
-                        <li>
-                            银牌:&nbsp;{{ silver }}
-                        </li>
-                        <li>
-                            铜牌:&nbsp;{{ bronze }}
-                        </li>
-                    </ul>
-                    <h4>文章</h4>
-                    <ul>
-                        {% for article in articles %}
-                            <li>题目:&nbsp;{{ article.doc_title }}&nbsp;点赞数:&nbsp;{{ article.count }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-                  </main>
-              
-                  <footer class="footer">
-                    <div class="container">
-                      <span class="text-muted">Place sticky footer content here.</span>
-                    </div>
-                  </footer>
-              
-    
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
+            </main>
+        {% block main %}       
+        {% endblock %}
+            <footer class="footer">
+              <div class="container">
+                <span class="text-muted">Place sticky footer content here.</span>
+              </div>
+            </footer>
+        
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+  crossorigin="anonymous"></script>
 </body>
 
 </html>

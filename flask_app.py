@@ -31,7 +31,7 @@ def index():
                 skills.append({'name': info['name'], 'incr': info['incr']})
 
         return render_template(
-            'base.html', skills=skills,
+            'index.html', skills=skills,
             user_name=obj.get('user_name'),
             education=obj.get('education'),
             fans_num = obj.get("followers_count"),
@@ -44,7 +44,7 @@ def index():
 
     else:
         return render_template(
-                'base.html', 
+                'index.html', 
                 skills = [
                         "php",
                         "javascript",
